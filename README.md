@@ -145,31 +145,31 @@ The audit service is successfully installed and actively running on the Kali Lin
 
 ### Screenshot 4.2 — Loaded custom audit rules
 
-```bash
-sudo auditctl -l
-```
+<img width="602" height="81" alt="image" src="https://github.com/user-attachments/assets/5fd1fb84-40fa-4524-bc15-47cd070dfe7b" />
 
-**Output:**
-
-```text
--w /etc/passwd -p rwxa -k passwd_changes
--w /etc/shadow -p rwxa -k shadow_changes
--a always,exit -F arch=b64 -S execve -F key=program_execution
--a always,exit -F arch=b32 -S execve -F key=program_execution
--w /var/log/auth.log -p wa -k auth_failures
-```
+The audit subsystem has successfully loaded custom rules monitoring changes to /etc/passwd and /etc/shadow, program execution through the execve syscall, and changes to the authentication log. Each rule has an audit key that can be used to retrieve related events with ausearch.
 
 ### 4.3 Audit event retrieved using program_execution key
 
-```bash
-sudo ausearch -k program_execution -i | grep -E "type=EXECVE|type=SYSCALL" | tail -6
-```
+<img width="941" height="209" alt="image" src="https://github.com/user-attachments/assets/3ab6df88-236b-4985-bc32-4435f1c2cdfc" />
+
+The program_execution audit key successfully returned recorded execution events. The audit record identifies the original authenticated user as hilda, while the recorded event for unix_chkpwd was executed with root privileges. The event occurred at approximately 01:39 on 3 October 2026, completed successfully, and was recorded against the program_execution audit key.
+
+### 4.1 Security Governance Interpretation
+This demonstrates how audit logging can provide accountability and traceability for privileged activity. Although the process operated with root privileges, the auid=hilda field preserves the identity of the original authenticated user. This distinction is useful for governance because it allows security teams and auditors to identify who initiated an action, what privileged process was executed, when it occurred, and whether it was successful.
+
+---
+
+### Evidence interpretation note
+It is expected that ausearch itself can appear in the results because the execve rule monitors program execution. The unix_chkpwd event is also legitimate and provides a useful example of the distinction between the initiating user and the privileged process.
+
+---
+
+### Screenshot 4.4 — aureport summary
+
+<img width="602" height="356" alt="image" src="https://github.com/user-attachments/assets/bf7a9cf2-dc3b-4ea6-b56e-886141b9386e" />
 
 ### 4.2 Audit Report Summary
-
-```bash
-sudo aureport
-```
 
 | Metric | Observed result |
 |---|---|
