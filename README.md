@@ -663,19 +663,21 @@ These conditions should not all be treated as security incidents. Their governan
 
 ## Appendix A: Evidence Register
 
-- [x] **E1** — Audit service status — `systemctl status auditd` — Section 4 / Screenshot 4.1
-- [x] **E2** — Loaded audit rules — `sudo auditctl -l` — Section 4 / Screenshot 4.2
-- [x] **E3** — Program execution audit event — `sudo ausearch -k program_execution -i` — Section 4 / Screenshot 4.3
-- [x] **E4** — Audit summary — `sudo aureport` — Section 4 / Screenshot 4.4
-- [x] **E5** — Recent system journal — `sudo journalctl --since "today" -n 8` — Section 5 / Screenshot 5.1
-- [x] **E6** — Authentication/privilege review — `journalctl` sudo activity — Section 5 / Screenshot 5.2
-- [x] **E7** — Error-level journal review — `sudo journalctl -p err --since "today" -n 10` — Section 5 / Screenshot 5.3
-- [x] **E8** — Live journal review — `journalctl` live-event review — Section 5 / Screenshot 5.4
-- [x] **E9** — Lynis metadata — `/var/log/lynis-report.dat` / Lynis output — Section 6 / Screenshot 6.1
-- [x] **E10** — Lynis baseline/current summary — Lynis assessment output — Section 6 / Screenshot 6.2
-- [x] **E11** — Lynis findings — Lynis suggestions/output — Section 6 / Screenshot 6.3
-- [x] **E12** — Password configuration — `/etc/login.defs` and `chage -l hilda` `auditctl -l` — Section 6 / Screenshot 6.4
-- [x] **E13** — Audit sensitive-file controls — `auditctl -l` — Section 6 / Screenshot 6.5
+| Evidence ID | Evidence Item | Source / Command | Report Location |
+|---|---|---|---|
+| E1 | Audit service status | `systemctl status auditd` | Section 4 / Screenshot 4.1 |
+| E2 | Loaded audit rules | `sudo auditctl -l` | Section 4 / Screenshot 4.2 |
+| E3 | Program execution audit event | `sudo ausearch -k program_execution -i` | Section 4 / Screenshot 4.3 |
+| E4 | Audit summary | `sudo aureport` | Section 4 / Screenshot 4.4 |
+| E5 | Recent system journal | `sudo journalctl --since "today" -n 8` | Section 5 / Screenshot 5.1 |
+| E6 | Authentication/privilege review | `journalctl` sudo activity | Section 5 / Screenshot 5.2 |
+| E7 | Error-level journal review | `sudo journalctl -p err --since "today" -n 10` | Section 5 / Screenshot 5.3 |
+| E8 | Live journal review | `journalctl` live-event review | Section 5 / Screenshot 5.4 |
+| E9 | Lynis metadata | `/var/log/lynis-report.dat` / Lynis output | Section 6 / Screenshot 6.1 |
+| E10 | Lynis baseline/current summary | Lynis assessment output | Section 6 / Screenshot 6.2 |
+| E11 | Lynis findings | Lynis suggestions/output | Section 6 / Screenshot 6.3 |
+| E12 | Password configuration | `/etc/login.defs` and `chage -l hilda` | Section 6 / Screenshot 6.4 |
+| E13 | Audit sensitive-file controls | `auditctl -l` | Section 6 / Screenshot 6.5 |
 
 ---
 
@@ -805,6 +807,27 @@ sudo auditctl -l
 **Security / control significance:** Potential resilience/availability concern requiring validation.
 
 **Recommended action:** Review resolver configuration and test required DNS services.
+
+---
+
+## Final Checklist Submission
+
+- [x] The report is submitted in the required format.
+- [x] All required sections are present and complete.
+- [x] Evidence Bundle 1 (Audit Configuration and Events) is included.
+- [x] Evidence Bundle 2 (Linux Log Analysis) is included.
+- [x] Evidence Bundle 3 (Lynis Security Assessment) is included.
+- [x] Evidence Bundle 4 (Control Monitoring and Governance) is included.
+- [x] Evidence Bundle 5 (SIEM, Automation and Continuous Monitoring) is included.
+- [x] Consolidated findings and risk priorities are documented.
+- [x] Remediation and retest plan is provided.
+- [x] Conclusion is included.
+- [x] Appendix A: Evidence Register is complete.
+- [x] Appendix B: Evidence Guide is complete.
+- [x] Appendix C: Finding Records is complete.
+- [x] All screenshots and command outputs are referenced.
+- [x] Authorisation note is included.
+- [x] Report is ready for submission.
 
 ---
 
