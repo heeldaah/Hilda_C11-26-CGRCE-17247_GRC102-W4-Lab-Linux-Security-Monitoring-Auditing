@@ -638,84 +638,57 @@ These conditions should not all be treated as security incidents. Their governan
 
 ### B1 — Audit service status
 
-```bash
-sudo systemctl status auditd
-```
+<img width="602" height="157" alt="image" src="https://github.com/user-attachments/assets/a99e712a-ad0b-42c8-806a-9376baa6b226" />
 
 ### B2 — Loaded audit rules
 
-```bash
-sudo auditctl -l
-```
+<img width="602" height="81" alt="image" src="https://github.com/user-attachments/assets/7783bf26-2328-40bb-96c4-c770c558a9b0" />
 
 ### B3 — Audit event
 
-```bash
-sudo ausearch -k program_execution -i | grep -E "type=EXECVE|type=SYSCALL" | tail -6
-```
+<img width="602" height="134" alt="image" src="https://github.com/user-attachments/assets/2df852c9-01c7-444f-adad-1e6f5aa0501c" />
 
 ### B4 — Aureport
 
-```bash
-sudo aureport
-```
+<img width="490" height="290" alt="image" src="https://github.com/user-attachments/assets/1c50b61b-e1c8-45d0-968c-6694aba822f4" />
 
 ### B5 — Journal review
 
-```bash
-sudo journalctl --since "today" | tail -20
-```
+<img width="478" height="207" alt="image" src="https://github.com/user-attachments/assets/157c8c34-aea0-4b8f-8cee-0721378b8fa2" />
 
 ### B6 — SSH/authentication activity
 
-```bash
-sudo journalctl -u ssh --since "today"
-sudo journalctl -u ssh
-```
+<img width="602" height="82" alt="image" src="https://github.com/user-attachments/assets/c2099dbe-5898-4fb7-8ebd-4edbf3d4f377" />
 
 ### B7 — System errors
 
-```bash
-sudo journalctl -p err --since "today" -n 10
-```
+<img width="602" height="94" alt="image" src="https://github.com/user-attachments/assets/2ef67855-b51c-461b-85a6-061be1a9d9cb" />
 
 ### B8 — Live events
 
-```bash
-sudo journalctl --since "today" -n 8
-sudo journalctl -f
-```
+<img width="472" height="89" alt="image" src="https://github.com/user-attachments/assets/f56abde0-afaa-4e5a-ac27-7d53d9ec3e84" />
 
-### B9 — Error-level journal
+<img width="493" height="166" alt="image" src="https://github.com/user-attachments/assets/48715c6e-2438-47a0-9ae2-6ccab9746d6f" />
 
-```bash
-sudo journalctl -p err --since "today" -n 10
-```
+### B9 — Lynis metadata
 
-### B10 — Lynis metadata
+<img width="602" height="313" alt="image" src="https://github.com/user-attachments/assets/6ca0192f-f4fe-46af-b6a2-1d110a4da838" />
 
-```bash
-sudo cat /var/log/lynis-report.dat
-```
+### B10 — Lynis summary
+
+<img width="602" height="53" alt="image" src="https://github.com/user-attachments/assets/b1160abd-78b9-4f49-913d-4bdea61ba5c1" />
 
 ### B11 — Lynis findings
 
-```bash
-sudo grep -E "warning|suggestion" /var/log/lynis.log | tail -40
-```
+<img width="602" height="502" alt="image" src="https://github.com/user-attachments/assets/cca2a830-9630-4519-a85c-05c36197fa12" />
 
 ### B12 — Password verification
 
-```bash
-sudo grep -E "^PASS_MAX_DAYS|^PASS_MIN_DAYS|^PASS_WARN_AGE" /etc/login.defs
-sudo chage -l hilda
-```
+<img width="329" height="122" alt="image" src="https://github.com/user-attachments/assets/1e6fb48d-a667-41eb-b5d1-6594c9a33332" />
 
 ### B13 — Existing auditd controls
 
-```bash
-sudo auditctl -l
-```
+<img width="541" height="119" alt="image" src="https://github.com/user-attachments/assets/7ed13551-668a-49ca-be90-78834e747fa7" />
 
 ---
 
