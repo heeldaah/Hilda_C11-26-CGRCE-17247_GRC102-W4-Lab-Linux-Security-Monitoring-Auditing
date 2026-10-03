@@ -206,53 +206,46 @@ System activity was reviewed using `journalctl` because `/var/log/auth.log` was 
 
 ### Screenshot 5.1 — Recent journal activity
 
-```bash
-sudo journalctl --since "today" | tail -20
-```
+<img width="602" height="260" alt="image" src="https://github.com/user-attachments/assets/c704caa2-9248-4aad-a8b3-6a9df5d6f274" />
 
-Recent system activity was reviewed using `journalctl`. The journal recorded normal privileged activity involving `sudo`, including sessions opened by user `hilda` to execute commands as root. The journal also recorded an auditd log rotation event at approximately **02:04 on 3 October 2026**.
+
+Recent system activity was reviewed using `journalctl`. The journal recorded normal privileged activity involving `sudo`, including sessions opened by user `hilda` to execute commands as root. The journal also recorded an auditd log rotation event at approximately **02:04 am on 3 October 2026**.
 
 ### Screenshot 5.2 — SSH / authentication activity
 
-```bash
-sudo journalctl -u ssh --since "today"
-sudo journalctl -u ssh
-```
+<img width="602" height="82" alt="image" src="https://github.com/user-attachments/assets/f2b97f2a-fd8f-40c1-94d5-7ca08e638a8a" />
 
-**Result:** No entries — no SSH authentication activity was recorded during the review period.
+### Screenshot 5.3 — Error-level system events
+
+<img width="602" height="94" alt="image" src="https://github.com/user-attachments/assets/27ffb034-9b85-4748-8303-73e64204279e" />
+
+### Screenshot 5.4 — Live journal events
+
+<img width="602" height="113" alt="image" src="https://github.com/user-attachments/assets/065c1d99-3d44-4d01-9fae-87cdbb520638" />
+
+<img width="602" height="203" alt="image" src="https://github.com/user-attachments/assets/02d456d2-66c2-4b34-9877-e5d2d0e68b07" />
 
 ### 5.1 Authentication and Privilege-Use Evidence
 
 The Kali Linux VM does not provide `/var/log/auth.log`; therefore, the system journal was used as the equivalent authentication and privilege-use evidence source. `journalctl` records `sudo` activity showing user `hilda` initiating privileged sessions as root, including the command executed and the opening and closing of the privileged session. This provides useful accountability for administrative activity.
 
+### Screenshot 5.5 — Authentication and Privilege-Use Evidence
+
+<img width="602" height="134" alt="image" src="https://github.com/user-attachments/assets/2f35cca3-1571-4f46-943b-25f44761fe89" />
+
 ### 5.2 Error and Warning Analysis
 
 The error-level journal review identified a `vmwgfx` graphics-driver message stating that the driver appeared to be running on an unsupported hypervisor, together with desktop/session service errors involving `gkr-pam` and `obexd`. The laboratory environment is a VirtualBox guest. These messages were therefore treated as **operational virtualisation or desktop-service conditions** rather than evidence of malicious activity.
 
+### Screenshot 5.6 — Error and Warning evidence
+
 #### a. Error evidence
 
-```bash
-sudo journalctl -p err --since "today" -n 10
-```
-
-**Observed:**
-
-- `vmwgfx` — driver running on an unsupported hypervisor
-- `gkr-pam` — unable to locate daemon control file
-- `obexd` — unable to acquire registry
+<img width="602" height="87" alt="image" src="https://github.com/user-attachments/assets/9b191b87-65da-4c4f-8bfb-82d5d6f05e12" />
 
 #### b. Warning evidence
 
-```bash
-sudo journalctl -p warning --since "today" -n 10
-```
-
-**Observed:**
-
-- `clocksource` — long readout interval
-- `upower` — failed to get percentage
-- `bluetooth` / `bluez` — system service not available
-- `rtkit-daemon` — canary thread apparently starving
+<img width="602" height="127" alt="image" src="https://github.com/user-attachments/assets/f8a22012-1b87-455b-a27d-f99f621c010b" />
 
 ### 5.3 Module 2 Conclusion
 
@@ -271,59 +264,17 @@ The review demonstrated that the Kali VM is actively generating and retaining sy
 
 ### Screenshot 6.1 — Lynis version/report metadata
 
-```bash
-sudo cat /var/log/lynis-report.dat
-```
-
-**Key metadata:**
-
-```text
-report_version_major=1
-report_version_minor=0
-report_datetime_start=2026-10-03 03:04:49
-auditor=[Not Specified]
-lynis_version=3.1.6
-os=Linux
-os_name=Kali Linux
-os_fullname=Kali GNU/Linux Rolling
-os_version=Rolling release
-linux_version=Kali
-os_kernel_version=6.19.14+kali
-os_kernel_version_full=6.19.14+kali-amd64
-hostname=hilda
-test_category=all
-test_group=all
-plugin_directory=/etc/lynis/plugins
-lynis_update_available=0
-vm=1
-vmtype=virtualbox
-container=0
-notebook=1
-systemd=1
-hostid=3c883280901181fe49e22536fc4d3725eb000098a
-hostid2=ec2754ce6aa4f6c083c81378105c668e8750ff56897eaa0b883b8467f0b7e3d6
-```
+<img width="441" height="229" alt="image" src="https://github.com/user-attachments/assets/51c122ad-467c-4dfc-a3c0-1c97ccc90429" />
 
 ### Screenshot 6.2 — Lynis baseline assessment summary
 
 **Initial**
 
-```text
-Hardening index : 60
-Tests performed : 253
-Plugins enabled : 1
-```
+<img width="390" height="228" alt="image" src="https://github.com/user-attachments/assets/60635de3-690e-4ab0-9ccc-7006a5e157d5" />
 
 **Retest**
 
-```bash
-sudo grep -E "Hardening index|Tests performed|Plugins enabled|Warnings|Suggestions" /var/log/lynis.log | tail -20
-```
-
-```text
-2026-10-03 02:48:38 Hardening index : [61]
-2026-10-03 02:48:51 Tests performed: 254
-```
+<img width="602" height="53" alt="image" src="https://github.com/user-attachments/assets/8690f7b0-595e-4958-8e10-b472d51600cc" />
 
 The initial Lynis assessment reported a **Hardening Index of 60** based on **253 tests**, with one plugin enabled. A subsequent assessment reported an index of **61** based on **254 tests**. The latest assessment is used as the current baseline, while the earlier result is retained as evidence of the initial scan.
 
@@ -333,9 +284,7 @@ The initial Lynis assessment reported a **Hardening Index of 60** based on **253
 
 ### Screenshot 6.3 — Lynis findings
 
-```bash
-sudo grep -E "warning|suggestion" /var/log/lynis.log | tail -40
-```
+<img width="602" height="502" alt="image" src="https://github.com/user-attachments/assets/a1580fec-2ab9-4f42-831a-515eb6eec376" />
 
 ### 6.1 Prioritised Lynis Findings
 
@@ -429,12 +378,12 @@ sudo grep -E "warning|suggestion" /var/log/lynis.log | tail -40
 
 **Priority:** Medium / validation required.
 
+
 ### 6.7 Password Age Verification
 
-```bash
-sudo grep -E "^PASS_MAX_DAYS|^PASS_MIN_DAYS|^PASS_WARN_AGE" /etc/login.defs
-sudo chage -l hilda
-```
+### Screenshot 6.4 — Password policy verification
+
+<img width="311" height="115" alt="image" src="https://github.com/user-attachments/assets/0419231f-adf3-44cd-a3d2-dec8f0803973" />
 
 | Setting | Evidence |
 |---|---|
@@ -447,6 +396,11 @@ sudo chage -l hilda
 | Password inactive | Never |
 
 The `chage` output confirms that the `PASS_MAX_DAYS = 99999` configuration is reflected on the user account. This is a control observation that should be assessed against the approved authentication policy **before any change is implemented**.
+
+### Screenshot 6.5 — Existing auditd controls
+
+<img width="541" height="119" alt="image" src="https://github.com/user-attachments/assets/54001e60-6d29-4376-a39d-1320822a159a" />
+
 
 ### 6.8 File Integrity Monitoring Distinction
 
