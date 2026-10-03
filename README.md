@@ -139,9 +139,7 @@ This evidence bundle demonstrates that the audit service was operational, that t
 
 ### Screenshot 4.1 — Audit daemon status
 
-```bash
-sudo systemctl status auditd
-```
+<img width="602" height="157" alt="image" src="https://github.com/user-attachments/assets/35a3e6c9-971e-427d-bafc-0b41d21dd8bb" />
 
 The audit service is successfully installed and actively running on the Kali Linux system. The service status shows `Active: active (running)` with audit operating as the main process (PID 10800). This confirms that the system is capable of collecting Linux security audit events.
 
