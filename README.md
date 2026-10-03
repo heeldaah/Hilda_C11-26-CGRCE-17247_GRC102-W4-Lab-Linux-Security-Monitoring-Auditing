@@ -9,9 +9,9 @@
 
 ---
 
-## Authorisation Note
-
-This report documents an authorised laboratory assessment. Findings are presented as control-assurance observations and are not represented as confirmed security incidents unless the evidence supports that conclusion.
+> ## Authorisation Note
+>
+> This report documents an authorised laboratory assessment. Findings are presented as control-assurance observations and are not represented as confirmed security incidents unless the evidence supports that conclusion.
 
 ---
 
