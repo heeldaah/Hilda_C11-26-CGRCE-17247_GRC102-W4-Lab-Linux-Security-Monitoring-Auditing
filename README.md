@@ -160,8 +160,9 @@ This demonstrates how audit logging can provide accountability and traceability 
 
 ---
 
-### Evidence interpretation note
-It is expected that ausearch itself can appear in the results because the execve rule monitors program execution. The unix_chkpwd event is also legitimate and provides a useful example of the distinction between the initiating user and the privileged process.
+> ### Evidence interpretation note
+> 
+> It is expected that ausearch itself can appear in the results because the execve rule monitors program execution. The unix_chkpwd event is also legitimate and provides a useful example of the distinction between the initiating user and the privileged process.
 
 ---
 
